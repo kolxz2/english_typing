@@ -6,3 +6,41 @@
 @media(max-width:460px){.shell{padding:0 15px}.header nav{gap:13px}.header nav .text-button{font-size:10px}.brand-icon{width:35px;height:35px;font-size:29px;line-height:31px;border-radius:10px}.brand{gap:8px;font-size:17px}.brand-caption{font-size:6px;letter-spacing:1.5px}h1{font-size:37px}.intro-copy{font-size:11px}.practice-label{font-size:11px;gap:6px}.pill{font-size:9px}.level-label{font-size:10px;gap:5px}select{font-size:10px;padding-right:8px}.exercise-content{padding:20px 17px}.card-top{padding:14px 15px}.steps{gap:9px}.steps i{width:14px}.step{font-size:9px;gap:5px}.step>span{width:20px;height:20px;line-height:20px;font-size:8px}#word-target{font-size:43px}.instruction{font-size:10px}.repeat-dot{width:12px}.card-bottom{padding:12px 15px;font-size:8px}#phase-hint>span{margin-left:6px}.stats{grid-template-columns:1fr 1fr;row-gap:18px;padding:17px 0}.stats>div:nth-child(2){border:0}.stat-label{font-size:8px}.keyboard-heading{font-size:9px;gap:6px}.keyboard-heading .text-button{font-size:9px}.layout-label{display:none}.key{height:29px;font-size:8px;border-radius:4px}.key-row{gap:3px}.key.wide,.key.wider{font-size:6px}.key.home::after{margin-top:17px}.keyboard-tip{font-size:9px}.block-en{font-size:20px}.block-ru{font-size:10px}.translation p{font-size:14px}footer{font-size:8px;flex-direction:column;gap:5px;margin-top:26px}.completion h2{font-size:23px}.input-bottom{font-size:9px}#typing-input{font-size:17px}.repeat-counter{font-size:15px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .char.typing-word{font-weight:650}
+
+/* Keep the trainer within the available screen, including mobile browser chrome. */
+html,body{width:100%;height:100%;overflow:hidden}
+.shell{width:100%;height:100vh;height:var(--viewport-height,100dvh);display:flex;flex-direction:column;padding-inline:clamp(12px,3vw,42px)}
+.header{height:clamp(52px,8vh,86px);flex-shrink:0}
+main{flex:1;min-height:0;display:flex;flex-direction:column}
+.intro{flex-shrink:0;padding:clamp(8px,2vh,24px) 0}
+h1{font-size:clamp(28px,4.5vh,48px);margin:8px 0;line-height:1.08}
+.intro-note p{margin:5px 0}.note-symbol{font-size:36px}.note-line{margin-top:8px}
+#trainer{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,1.2vh,14px)}
+.toolbar{flex-shrink:0;margin:0;gap:8px}
+.practice-card{flex:1;min-height:0;display:flex;flex-direction:column}
+.card-top,.card-bottom{flex-shrink:0;padding:8px 20px}
+.exercise-content{flex:1;min-height:0;padding:12px 24px;display:flex;flex-direction:column;justify-content:center}
+.exercise-fit{flex-shrink:0;display:flow-root}
+#word-panel{padding:0 0 8px}#word-target{font-size:clamp(30px,5vh,49px);overflow-wrap:anywhere;margin-top:4px}
+#word-translation{margin:4px 0 10px}.instruction{margin-top:8px}
+#typing-input{padding-block:10px;font-size:16px}
+.sentence-blocks{margin:8px 0;gap:4px 2px}.block-en{font-size:clamp(16px,2.5vh,23px);line-height:1.4}
+.word-block{padding:3px 5px}.translation{padding:8px 12px;margin-bottom:10px}.translation p{line-height:1.5;margin-top:3px}
+.stats{flex-shrink:0;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:8px 0;row-gap:0}
+.stats>div{padding:0 clamp(6px,2vw,25px)}.stats strong{font-size:20px}.stat-label{font-size:7px;letter-spacing:.4px}.stats p>span{font-size:9px}
+.keyboard-section{flex-shrink:0}.keyboard-heading{margin-bottom:5px}.keyboard{gap:4px}.key{height:clamp(22px,3.5vh,39px)}.keyboard-tip{margin:5px 0 0}
+footer{flex-shrink:0;margin-top:10px;padding:8px 0;flex-direction:row;gap:8px}
+.notice{flex-shrink:0;padding:6px 10px;margin-bottom:6px;font-size:11px}
+.loading{flex:1;min-height:0;margin:0}.error-card{margin:0;padding:12px}
+@media(max-width:720px){
+ .intro-note,.keyboard-section{display:none}
+ .intro{padding:12px 0}.intro .eyebrow{display:none}
+ h1{font-size:clamp(26px,5vw,38px)}h1 br{display:none}h1 em{display:block}
+ .exercise-content{padding:10px 12px}.card-top,.card-bottom{padding:7px 10px}
+ .stats p>span{display:block;margin:0}.stats>div:nth-child(2){border-right:1px solid var(--line)}
+ .stat-label{font-size:7px}.local-save{display:none}
+ footer>span:first-child{display:none}footer{justify-content:center;font-size:8px}
+}
+@media(max-height:800px){.intro-copy,.intro-note,.keyboard-tip{display:none}.intro{padding:8px 0}.key{height:24px}h1 br{display:none}h1 em{margin-left:.2em}h1{font-size:30px}}
+@media(max-height:650px){.intro,.keyboard-section,footer{display:none}.header{height:48px}main{padding:6px 0}.stats{padding:4px 0}.stats strong{font-size:17px}}
+@media(max-height:420px){.stats,.card-bottom{display:none}.header{height:40px}.brand-icon{height:30px;width:30px;font-size:25px;line-height:27px}.brand-caption{display:none}.card-top{padding-block:3px}.toolbar select{padding-block:3px}#trainer{gap:4px}}

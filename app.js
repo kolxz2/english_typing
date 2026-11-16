@@ -277,3 +277,40 @@ async function load() {
 }
 setInterval(() => { if (ready && clockStart !== null) { flushClock(); renderMetrics(); save(); } }, 1000);
 load();
+
+// Fit long exercises without clipping their translation or controls.
+const exerciseContent = document.querySelector('.exercise-content');
+const exerciseFit = document.createElement('div');
+exerciseFit.className = 'exercise-fit';
+exerciseFit.append(...exerciseContent.childNodes);
+exerciseContent.append(exerciseFit);
+let layoutFrame;
+function scheduleLayout() {
+  cancelAnimationFrame(layoutFrame);
+  layoutFrame = requestAnimationFrame(() => {
+    const viewport = window.visualViewport;
+    document.documentElement.style.setProperty('--viewport-height', `${viewport?.height ?? window.innerHeight}px`);
+    if ($('trainer').hidden) return;
+    exerciseFit.style.zoom = 1;
+    const style = getComputedStyle(exerciseContent);
+    const available = exerciseContent.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+    if (available <= 0) return;
+    let low = 0.1, high = 1;
+    if (exerciseFit.getBoundingClientRect().height > available) {
+      for (let i = 0; i < 10; i++) {
+        const scale = (low + high) / 2;
+        exerciseFit.style.zoom = scale;
+        if (exerciseFit.getBoundingClientRect().height <= available) low = scale;
+        else high = scale;
+      }
+      exerciseFit.style.zoom = low;
+    }
+  });
+}
+new ResizeObserver(scheduleLayout).observe(exerciseContent);
+new MutationObserver(scheduleLayout).observe($('trainer'), {
+  subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['hidden']
+});
+window.addEventListener('resize', scheduleLayout);
+window.visualViewport?.addEventListener('resize', scheduleLayout);
+scheduleLayout();
