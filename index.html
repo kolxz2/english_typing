@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f4">
+  <meta name="description" content="Печатайте по-английски и понимайте каждое слово. Предложения Tatoeba, переводы и спокойная ежедневная практика.">
+  <title>Word by word — английский через печать</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="./" aria-label="Word by word — главная"><span class="brand-icon">w<span>·</span></span><span>word by word<span class="brand-caption">АНГЛИЙСКИЙ ЧЕРЕЗ ПЕЧАТЬ</span></span></a>
+      <nav aria-label="Настройки"><button class="text-button" id="sources-open">Источники <span aria-hidden="true">↗</span></button><button class="icon-button" id="theme-toggle" aria-label="Включить тёмную тему" title="Сменить тему">◐</button></nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div><div class="eyebrow"><span class="status-dot"></span> МАЛЕНЬКАЯ ПРАКТИКА. БОЛЬШОЙ ПРОГРЕСС.</div><h1>Печатайте. Понимайте.<br><em>Запоминайте.</em></h1><p class="intro-copy">Английский становится ближе — слово за словом.</p></div>
+        <div class="intro-note"><span class="note-symbol" aria-hidden="true">Aa</span><p>Сначала одно слово.<br>Потом целая мысль.</p><span class="note-line" aria-hidden="true"></span></div>
+      </section>
+
+      <div id="storage-notice" class="notice" role="status" hidden></div>
+      <section id="loading" class="loading" aria-live="polite"><span class="status-dot"></span> Подготавливаем вашу практику…</section>
+      <section id="load-error" class="error-card" hidden><h2>Не удалось загрузить предложения</h2><p>Проверьте соединение и попробуйте ещё раз. При локальном запуске откройте сайт через HTTP-сервер.</p><button id="retry" class="primary-button">Попробовать снова</button></section>
+
+      <section id="trainer" aria-label="Тренажёр печати" hidden>
+        <div class="toolbar"><div class="practice-label"><span class="tiny-grid" aria-hidden="true">▦</span> Ваша практика <span id="corpus-count" class="pill"></span></div><label class="level-label" for="level">Уровень <select id="level"><option value="all">B1 + B2</option><option value="B1">B1 · Средний</option><option value="B2">B2 · Выше среднего</option></select></label></div>
+
+        <article class="practice-card">
+          <div class="card-top"><div class="steps"><span id="step-word" class="step"><span>01</span> Разминка слова</span><i aria-hidden="true"></i><span id="step-sentence" class="step"><span>02</span> Предложение</span></div><span id="sentence-level" class="level-badge">B1</span></div>
+          <div class="exercise-content">
+            <div class="exercise-heading"><span id="exercise-kicker" class="eyebrow">ЗНАКОМСТВО СО СЛОВОМ</span><span id="repeat-counter" class="repeat-counter">0 <span>/ 15</span></span></div>
+            <section id="word-panel"><h2 id="word-target" lang="en"></h2><p id="word-translation"></p><div id="repeat-dots" class="repeat-dots" aria-label="Прогресс повторений"></div><p class="instruction">Напечатайте слово 15 раз. Каждое повторение закрепляет его в памяти.</p></section>
+            <section id="sentence-panel" hidden><h2 class="sr-only">Напечатайте предложение</h2><div id="sentence-blocks" class="sentence-blocks" lang="en"></div><div class="translation"><span class="translation-label">СМЫСЛ ПРЕДЛОЖЕНИЯ</span><p id="full-translation" lang="ru"></p></div></section>
+
+            <div id="input-area" class="input-area"><label id="input-label" for="typing-input">Введите слово</label><div class="input-wrap"><input id="typing-input" type="text" lang="en" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-describedby="input-hint feedback"><span id="enter-hint" class="enter-hint" aria-hidden="true">Enter ↵</span></div><div class="input-bottom"><span id="input-hint">Смотрите на слово, а не на клавиши</span><span id="feedback" role="status" aria-live="polite"></span></div></div>
+
+            <section id="completion" class="completion" hidden aria-live="polite"><div><span class="complete-icon" aria-hidden="true">✓</span><h2>Ещё одна мысль по-английски.</h2><p id="completion-summary"></p></div><button id="next" class="primary-button">Следующее предложение <span aria-hidden="true">→</span></button><p class="completion-hint">или нажмите Enter</p></section>
+          </div>
+          <div class="card-bottom"><span id="phase-hint">01 / 02 <span>Слово перед предложением</span></span><span class="local-save"><span class="status-dot"></span><span id="save-label">Прогресс сохраняется</span></span></div>
+        </article>
+
+        <section class="stats" aria-label="Статистика"><div><span class="stat-label">СКОРОСТЬ <span title="Правильные символы / 5 / минуты. Только печать предложений.">ⓘ</span></span><p><strong id="wpm">—</strong> <span>слов/мин</span></p></div><div><span class="stat-label">ТОЧНОСТЬ</span><p><strong id="accuracy">—</strong> <span>%</span></p></div><div><span class="stat-label">ПРЕДЛОЖЕНИЙ</span><p><strong id="completed-count">0</strong> <span>завершено</span></p></div><div><span class="stat-label">ПОВТОРЕНИЙ СЛОВ</span><p><strong id="word-count">0</strong> <span>всего</span></p></div></section>
+
+        <section class="keyboard-section" aria-label="Экранная клавиатура"><div class="keyboard-heading"><span><span aria-hidden="true">⌨</span> Английская раскладка <span class="layout-label">US QWERTY</span></span><button id="keyboard-toggle" class="text-button" aria-expanded="true" aria-controls="keyboard">Скрыть клавиатуру <span aria-hidden="true">⌃</span></button></div><div id="keyboard" class="keyboard" aria-label="Подсветка физических нажатий"></div><p id="keyboard-tip" class="keyboard-tip">Не спешите. Точность важнее скорости.</p></section>
+      </section>
+    </main>
+    <footer><span>Немного каждый день — и слова становятся своими.</span><span>Сделано для вдумчивой практики <span class="footer-dot">●</span></span></footer>
+  </div>
+
+  <dialog id="sources-dialog"><div class="dialog-heading"><h2>Слова с историей</h2><button id="sources-close" class="icon-button" aria-label="Закрыть источники">×</button></div><p>Английские предложения и прямые русские переводы — из открытого корпуса <a href="https://tatoeba.org/" target="_blank" rel="noopener noreferrer">Tatoeba</a>. Пословные пояснения, соответствия и уровни сложности подготовлены для этого тренажёра. Уровни B1/B2 — редакционная оценка, не сертификация CEFR.</p><p>Тексты используются по <a href="https://creativecommons.org/licenses/by/2.0/fr/" target="_blank" rel="noopener noreferrer">CC BY 2.0 FR</a> (либо CC0, если указано для оригинала). Контекстные пояснения не являются дословным переводом каждого английского слова.</p><div id="current-sources"></div><p><a href="./data/sentences.json" target="_blank" rel="noopener">Полная база и ссылки на оригиналы ↗</a></p><p class="dialog-note">Прогресс хранится только в этом браузере. Очистка данных сайта удалит его. Во время занятий внешние сервисы не вызываются.</p></dialog>
+</body>
+</html>
