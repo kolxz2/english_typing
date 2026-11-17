@@ -28,7 +28,7 @@ h1{font-size:clamp(28px,4.5vh,48px);margin:8px 0;line-height:1.08}
 .word-block{padding:3px 5px}.translation{padding:8px 12px;margin-bottom:10px}.translation p{line-height:1.5;margin-top:3px}
 .stats{flex-shrink:0;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:8px 0;row-gap:0}
 .stats>div{padding:0 clamp(6px,2vw,25px)}.stats strong{font-size:20px}.stat-label{font-size:7px;letter-spacing:.4px}.stats p>span{font-size:9px}
-.keyboard-section{flex-shrink:0}.keyboard-heading{margin-bottom:5px}.keyboard{gap:4px}.key{height:clamp(22px,3.5vh,39px)}.keyboard-tip{margin:5px 0 0}
+.keyboard-section{flex-shrink:0}.keyboard-heading{margin-bottom:5px}.keyboard{max-width:850px;gap:4px}.key{position:relative;height:clamp(30px,4vh,44px);font-size:18px;font-weight:600;line-height:1;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 24%,var(--key))}.key.wide,.key.wider,.key.space{font-size:13px}.key.home::after{bottom:3px;margin-top:0;border-color:currentColor}.keyboard-tip{margin:5px 0 0}
 footer{flex-shrink:0;margin-top:10px;padding:8px 0;flex-direction:row;gap:8px}
 .notice{flex-shrink:0;padding:6px 10px;margin-bottom:6px;font-size:11px}
 .loading{flex:1;min-height:0;margin:0}.error-card{margin:0;padding:12px}
@@ -41,6 +41,6 @@ footer{flex-shrink:0;margin-top:10px;padding:8px 0;flex-direction:row;gap:8px}
  .stat-label{font-size:7px}.local-save{display:none}
  footer>span:first-child{display:none}footer{justify-content:center;font-size:8px}
 }
-@media(max-height:800px){.intro-copy,.intro-note,.keyboard-tip{display:none}.intro{padding:8px 0}.key{height:24px}h1 br{display:none}h1 em{margin-left:.2em}h1{font-size:30px}}
+@media(max-height:800px){.intro-copy,.intro-note,.keyboard-tip{display:none}.intro{padding:8px 0}.key{height:30px}h1 br{display:none}h1 em{margin-left:.2em}h1{font-size:30px}}
 @media(max-height:650px){.intro,.keyboard-section,footer{display:none}.header{height:48px}main{padding:6px 0}.stats{padding:4px 0}.stats strong{font-size:17px}}
 @media(max-height:420px){.stats,.card-bottom{display:none}.header{height:40px}.brand-icon{height:30px;width:30px;font-size:25px;line-height:27px}.brand-caption{display:none}.card-top{padding-block:3px}.toolbar select{padding-block:3px}#trainer{gap:4px}}
